@@ -1,0 +1,9 @@
+{
+  "manifest_version": 3,
+  "name": "Session Keeper",
+  "version": "1.0",
+  "description": "Keep your account session and switch quickly",
+  "action": {
+    "default_popup": "index.html"
+  }
+}
