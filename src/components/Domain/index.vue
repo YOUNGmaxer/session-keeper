@@ -2,8 +2,5 @@
 </script>
 
 <template>
-  <Header />
-  <div>
-
-  </div>
+  <div></div>
 </template>
