@@ -10,6 +10,7 @@
     "*://*.moomoo.com/"
   ],
   "permissions": [
-    "cookies"
+    "cookies",
+    "storage"
   ]
 }
