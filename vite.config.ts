@@ -17,7 +17,7 @@ export default defineConfig({
     Vue(),
     UnoCSS(),
     AutoImport({
-      imports: ['vue'],
+      imports: ['vue', 'pinia'],
     }),
     Components({
       resolvers: [NaiveUiResolver()],

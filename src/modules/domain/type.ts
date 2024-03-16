@@ -1,4 +1,4 @@
-import { Account } from './type'
+import { Account } from '@/modules/account'
 
 export type Domain = string
 
