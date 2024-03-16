@@ -5,5 +5,11 @@
   "description": "Keep your account session and switch quickly",
   "action": {
     "default_popup": "index.html"
-  }
+  },
+  "host_permissions": [
+    "*://*.moomoo.com/"
+  ],
+  "permissions": [
+    "cookies"
+  ]
 }
