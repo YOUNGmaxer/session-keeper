@@ -15,4 +15,4 @@ const confirmAdd = (account: Account) => {
     <NButton size="small" @click="clickAdd">添加</NButton>
     <AccountFormDialog v-model:visible="visible" @confirm="confirmAdd" />
   </div>
-</template>
+</template>@/modules/type

@@ -1,4 +1,4 @@
-import { Account } from './account'
+import { Account } from './type'
 
 export type Domain = string
 

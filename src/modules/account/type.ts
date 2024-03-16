@@ -1,4 +1,4 @@
-import { TagId } from './tag'
+import { TagId } from '@/modules/tag'
 
 /** 账户信息 */
 export interface Account {

@@ -53,4 +53,4 @@ const confirm = async () => {
       </div>
     </template>
   </NModal>
-</template>
+</template>@/modules/type
