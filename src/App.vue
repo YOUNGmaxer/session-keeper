@@ -2,5 +2,5 @@
 </script>
 
 <template>
-  <div>Session Keeper1</div>
+  <div>Session Keeper2</div>
 </template>
