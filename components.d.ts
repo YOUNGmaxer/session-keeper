@@ -7,8 +7,14 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AccountFormDialog: typeof import('./src/components/Domain/components/AccountFormDialog.vue')['default']
     Domain: typeof import('./src/components/Domain/index.vue')['default']
     Header: typeof import('./src/components/Header.vue')['default']
     NButton: typeof import('naive-ui')['NButton']
+    NForm: typeof import('naive-ui')['NForm']
+    NFormItem: typeof import('naive-ui')['NFormItem']
+    NInput: typeof import('naive-ui')['NInput']
+    NModal: typeof import('naive-ui')['NModal']
+    NSelect: typeof import('naive-ui')['NSelect']
   }
 }
