@@ -1,35 +1,46 @@
 <script setup lang="ts">
-import { Account } from '@/modules/account';
-import { FormInst, FormRules } from 'naive-ui';
+import { Account } from '@/modules/account'
+import { useDomain } from '@/modules/domain'
+import { logger } from '@/modules/logger'
+import { FormInst, FormRules, FormItemRule } from 'naive-ui'
 
 const emit = defineEmits<{
   (e: 'confirm', form: Account): void
-}>();
-const visible = defineModel<boolean>('visible');
+}>()
+const visible = defineModel<boolean>('visible')
 const form = reactive<Account>({
   id: '',
   alias: '',
-  tags: []
-});
-const formRef = ref<FormInst | null>(null);
+  tags: [],
+})
+const formRef = ref<FormInst | null>(null)
+const domainStore = useDomain()
 const rules: FormRules = {
-  id: {
-    required: true
-  },
+  id: [
+    {
+      required: true,
+      validator(_: FormItemRule, value: string) {
+        if (domainStore.currentAccounts.find((item) => item.id === value)) {
+          return new Error('该账户已存在')
+        }
+        return true
+      },
+    },
+  ],
   alias: {
-    required: false
+    required: false,
   },
   tags: {
-    required: false
-  }
+    required: false,
+  },
 }
 const confirm = async () => {
   try {
-    await formRef.value?.validate();
-    emit('confirm', toRaw(form));
-    visible.value = false;
+    await formRef.value?.validate()
+    emit('confirm', toRaw(form))
+    visible.value = false
   } catch (err) {
-    console.log('confirm err', err);
+    logger.error('confirm err', err)
   }
 }
 </script>

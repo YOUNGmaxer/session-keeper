@@ -22,6 +22,10 @@ export async function setCookies(cookies: Cookie[]) {
   return new Promise(async (resolve) => {
     const url = await queryCurrentUrl()
     for (const cookie of cookies) {
+      // hostOnly 的 cookie 无法设置，跳过
+      if (cookie.hostOnly) continue
+      // TODO: 过期 cookie 跳过
+
       chrome.cookies.set(
         {
           url: url.href,
