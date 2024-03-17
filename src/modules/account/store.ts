@@ -16,7 +16,6 @@ export const useAccount = defineStore('account', {
       if (this.currentAccount?.id === account.id) return
       this.currentAccount = account
       const cookies = await queryAccountCookie(account.id)
-      console.log('azeryang => switchAccount => cookies:', cookies)
       await setCookies(cookies)
     },
   },

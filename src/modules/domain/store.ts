@@ -2,7 +2,7 @@ import { getCookies, removeAccountCookie, saveAccountCookie } from '@/modules/co
 import { queryCurrentDomain } from './api'
 import { queryDomainAccounts, saveDomainAccounts } from './storage'
 import { Domain, DomainAccountMap } from './type'
-import { Account } from '@/modules/account'
+import { Account, interCurrentAccountId, useAccount } from '@/modules/account'
 
 interface State {
   currentDomain: Domain
@@ -24,6 +24,16 @@ export const useDomain = defineStore('domain', {
       this.currentDomain = await queryCurrentDomain()
       const accounts = await queryDomainAccounts(this.currentDomain)
       this.domainMap.set(this.currentDomain, Array.isArray(accounts) ? accounts : Object.values(accounts))
+      await this.syncCurrentAccount()
+    },
+
+    /** 同步当前用户 */
+    async syncCurrentAccount() {
+      const currentAccountId = await interCurrentAccountId()
+      if (currentAccountId) {
+        const currentAccount = this.currentAccounts.find((item) => item.id === currentAccountId)
+        if (currentAccount) useAccount().currentAccount = currentAccount
+      }
     },
 
     async saveDomain() {
