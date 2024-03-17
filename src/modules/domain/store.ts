@@ -1,3 +1,4 @@
+import { getCookies } from '@/modules/cookie'
 import { queryCurrentDomain } from './api'
 import { queryDomainData, saveDomainData } from './storage'
 import { Domain, DomainAccountMap } from './type'
@@ -21,6 +22,7 @@ export const useDomain = defineStore('domain', {
   actions: {
     async syncDomain() {
       this.currentDomain = await queryCurrentDomain()
+      getCookies().then((res) => console.log('cookie', res))
       const domainData = await queryDomainData(this.currentDomain)
       this.domainMap.set(this.currentDomain, domainData)
     },

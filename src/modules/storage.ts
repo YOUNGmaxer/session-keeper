@@ -1,3 +1,5 @@
+import { logger } from './logger'
+
 interface Option {
   storage: chrome.storage.LocalStorageArea
 }
@@ -15,9 +17,13 @@ class EasyStorage {
   }
 
   async set(key: string, value: any) {
-    await this.storage.set({
-      [key]: value,
-    })
+    try {
+      await this.storage.set({
+        [key]: value,
+      })
+    } catch (err: any) {
+      logger.error(err)
+    }
   }
 }
 
