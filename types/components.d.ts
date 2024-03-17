@@ -11,6 +11,7 @@ declare module 'vue' {
     AccountFormDialog: typeof import('./../src/components/Domain/components/AccountFormDialog.vue')['default']
     AccountList: typeof import('./../src/components/Domain/components/AccountList.vue')['default']
     Domain: typeof import('./../src/components/Domain/index.vue')['default']
+    DomainBar: typeof import('./../src/components/Domain/components/DomainBar.vue')['default']
     Header: typeof import('./../src/components/Header.vue')['default']
     Tags: typeof import('./../src/components/Domain/components/Tags.vue')['default']
   }

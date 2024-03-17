@@ -29,7 +29,7 @@ const deleteAccount = () => {
         </div>
         <Tags :tag-ids="account.tags" />
       </div>
-      <div>
+      <div flex items-center>
         <Icon class="hover-color-red" @click="deleteAccount">
           <Delete28Filled />
         </Icon>

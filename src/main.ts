@@ -1,4 +1,5 @@
 import 'virtual:uno.css'
+import './style/preset.css'
 import App from './App.vue'
 import { createPinia } from 'pinia'
 
