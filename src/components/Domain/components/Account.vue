@@ -1,18 +1,20 @@
 <script setup lang="ts">
 import { Account, useAccount } from '@/modules/account'
 import Tags from './Tags.vue'
-import { queryAccountCookie } from '@/modules/cookie'
 import Delete28Filled from '@vicons/fluent/Delete28Filled'
 import { Icon } from '@vicons/utils'
 import { useDomain } from '@/modules/domain'
+import { reloadCurrentTab } from '@/modules/tab'
 
 const props = defineProps<{
   account: Account
   active?: boolean
 }>()
 
-const click = () => {
-  useAccount().switchAccount(props.account)
+const click = async () => {
+  await useAccount().switchAccount(props.account)
+  // 切换完账户，刷新页面
+  reloadCurrentTab()
 }
 const deleteAccount = () => {
   useDomain().deleteAccount(props.account)

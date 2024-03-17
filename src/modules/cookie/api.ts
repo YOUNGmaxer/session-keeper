@@ -18,33 +18,41 @@ export async function getCookies(): Promise<Cookie[]> {
   })
 }
 
-export async function setCookies(cookies: Cookie[]) {
-  return new Promise(async (resolve) => {
-    const url = await queryCurrentUrl()
-    for (const cookie of cookies) {
-      // hostOnly 的 cookie 无法设置，跳过
-      if (cookie.hostOnly) continue
-      // TODO: 过期 cookie 跳过
-
-      chrome.cookies.set(
-        {
-          url: url.href,
-          domain: cookie.domain,
-          name: cookie.name,
-          storeId: cookie.storeId,
-          value: cookie.value,
-          expirationDate: cookie.expirationDate,
-          path: cookie.path,
-          httpOnly: cookie.httpOnly,
-          secure: cookie.secure,
-          sameSite: cookie.sameSite,
-        },
-        (newCookie) => {
-          if (!newCookie) {
-            logger.error(cookie, chrome.runtime.lastError)
-          }
+export async function setCookie(url: string, cookie: Cookie): Promise<Cookie> {
+  return new Promise((resolve, reject) => {
+    chrome.cookies.set(
+      {
+        url,
+        domain: cookie.domain,
+        name: cookie.name,
+        storeId: cookie.storeId,
+        value: cookie.value,
+        expirationDate: cookie.expirationDate,
+        path: cookie.path,
+        httpOnly: cookie.httpOnly,
+        secure: cookie.secure,
+        sameSite: cookie.sameSite,
+      },
+      (newCookie) => {
+        if (!newCookie) {
+          logger.error(cookie, chrome.runtime.lastError)
+          reject(chrome.runtime.lastError)
+        } else {
+          resolve(newCookie)
         }
-      )
-    }
+      }
+    )
   })
+}
+
+export async function setCookies(cookies: Cookie[]): Promise<void> {
+  const url = await queryCurrentUrl()
+  const tasks = []
+  for (const cookie of cookies) {
+    // hostOnly 的 cookie 无法设置，跳过
+    if (cookie.hostOnly) continue
+    // TODO: 过期 cookie 跳过
+    tasks.push(setCookie(url.href, cookie))
+  }
+  await Promise.allSettled(tasks)
 }
