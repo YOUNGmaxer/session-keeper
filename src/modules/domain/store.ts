@@ -1,4 +1,4 @@
-import { getCookies, saveAccountCookie } from '@/modules/cookie'
+import { getCookies, removeAccountCookie, saveAccountCookie } from '@/modules/cookie'
 import { queryCurrentDomain } from './api'
 import { queryDomainAccounts, saveDomainAccounts } from './storage'
 import { Domain, DomainAccountMap } from './type'
@@ -39,6 +39,16 @@ export const useDomain = defineStore('domain', {
       this.domainMap.set(this.currentDomain, [...toRaw(this.currentAccounts), account])
       await this.saveDomain()
       await this.saveCookie(account)
+    },
+
+    async deleteAccount(account: Account) {
+      const accounts = toRaw(this.currentAccounts)
+      this.domainMap.set(
+        this.currentDomain,
+        accounts.filter((item) => item.id !== account.id)
+      )
+      await this.saveDomain()
+      await removeAccountCookie(account.id)
     },
   },
 })

@@ -25,6 +25,14 @@ class EasyStorage {
       logger.error(err)
     }
   }
+
+  async remove(key: string) {
+    try {
+      await this.storage.remove(key)
+    } catch (err: any) {
+      logger.error(err)
+    }
+  }
 }
 
 export const storage = new EasyStorage({ storage: chrome.storage.local })
