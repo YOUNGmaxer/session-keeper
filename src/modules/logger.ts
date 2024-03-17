@@ -1,13 +1,13 @@
 export const logger = {
-  log(msg: string | Error) {
-    console.log(msg)
+  log(...args: any[]) {
+    console.log(...args)
   },
 
-  warn(msg: string | Error) {
-    console.warn(msg)
+  warn(...args: any[]) {
+    console.warn(...args)
   },
 
-  error(msg: string | Error) {
-    console.error(msg)
+  error(...args: any[]) {
+    console.error(...args)
   },
 }

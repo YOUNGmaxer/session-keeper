@@ -1,16 +1,26 @@
 <script setup lang="ts">
-import { Account } from '@/modules/account'
+import { Account, useAccount } from '@/modules/account'
 import Tags from './Tags.vue'
+import { queryAccountCookie } from '@/modules/cookie'
 
-defineProps<{
+const props = defineProps<{
   account: Account
+  active?: boolean
 }>()
+
+const click = () => {
+  useAccount().switchAccount(props.account)
+}
 </script>
 
 <template>
-  <div flex items-center>
-    <div>{{ account.alias }}</div>
-    <div ml-8px color-gray text-10px>({{ account.id }})</div>
-  </div>
-  <Tags :tag-ids="account.tags" />
+  <NListItem cursor-pointer :class="active ? 'bg-green hover-bg-green!' : ''">
+    <div flex items-center @click="click">
+      <div :class="active ? 'color-white' : ''">{{ account.alias || account.id }}</div>
+      <div ml-8px text-10px :class="active ? 'color-light' : 'color-gray'">({{ account.id }})</div>
+    </div>
+    <Tags :tag-ids="account.tags" />
+  </NListItem>
 </template>
+
+<style scoped></style>

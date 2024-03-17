@@ -1,16 +1,17 @@
 <script setup lang="ts">
-import { Account as IAccount } from '@/modules/account'
+import { Account as IAccount, useAccount } from '@/modules/account'
 import Account from './Account.vue'
 
 defineProps<{
   accounts: IAccount[]
 }>()
+
+const accountStore = useAccount()
+const isActive = (account: IAccount) => account.id === accountStore.currentAccount?.id
 </script>
 
 <template>
   <NList hoverable>
-    <NListItem v-for="account in accounts" :key="account.id">
-      <Account :account="account" />
-    </NListItem>
+    <Account v-for="account in accounts" :key="account.id" :account="account" :active="isActive(account)" />
   </NList>
 </template>

@@ -1,6 +1,6 @@
-import { getCookies } from '@/modules/cookie'
+import { getCookies, saveAccountCookie } from '@/modules/cookie'
 import { queryCurrentDomain } from './api'
-import { queryDomainData, saveDomainData } from './storage'
+import { queryDomainAccounts, saveDomainAccounts } from './storage'
 import { Domain, DomainAccountMap } from './type'
 import { Account } from '@/modules/account'
 
@@ -22,18 +22,23 @@ export const useDomain = defineStore('domain', {
   actions: {
     async syncDomain() {
       this.currentDomain = await queryCurrentDomain()
-      getCookies().then((res) => console.log('cookie', res))
-      const domainData = await queryDomainData(this.currentDomain)
-      this.domainMap.set(this.currentDomain, domainData)
+      const accounts = await queryDomainAccounts(this.currentDomain)
+      this.domainMap.set(this.currentDomain, Array.isArray(accounts) ? accounts : Object.values(accounts))
     },
 
     async saveDomain() {
-      await saveDomainData(this.currentDomain, this.currentAccounts)
+      await saveDomainAccounts(this.currentDomain, this.currentAccounts)
+    },
+
+    async saveCookie(account: Account) {
+      const cookies = await getCookies()
+      await saveAccountCookie(account.id, cookies)
     },
 
     async addAccount(account: Account) {
-      this.domainMap.set(this.currentDomain, [...this.currentAccounts, account])
+      this.domainMap.set(this.currentDomain, [...toRaw(this.currentAccounts), account])
       await this.saveDomain()
+      await this.saveCookie(account)
     },
   },
 })

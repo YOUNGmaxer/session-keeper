@@ -8,6 +8,6 @@ defineProps<{
 
 <template>
   <NSpace size="small">
-    <NTag size="small">tag</NTag>
+    <NTag v-for="tag in tagIds" size="small">{{ tag }}</NTag>
   </NSpace>
 </template>

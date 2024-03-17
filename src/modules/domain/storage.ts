@@ -3,7 +3,7 @@ import { Domain } from './type'
 import { storage } from '@/modules/storage'
 import { logger } from '@/modules/logger'
 
-export const saveDomainData = async (domain: Domain, accounts: Account[]): Promise<void> => {
+export const saveDomainAccounts = async (domain: Domain, accounts: Account[]): Promise<void> => {
   try {
     await storage.set(domain, accounts)
   } catch (err: any) {
@@ -11,7 +11,7 @@ export const saveDomainData = async (domain: Domain, accounts: Account[]): Promi
   }
 }
 
-export const queryDomainData = async (domain: Domain): Promise<Account[]> => {
+export const queryDomainAccounts = async (domain: Domain): Promise<Account[]> => {
   try {
     const res = await storage.get<Account[]>(domain)
     return res
