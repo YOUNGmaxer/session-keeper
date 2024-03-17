@@ -10,7 +10,7 @@ defineProps<{
 <template>
   <div flex items-center>
     <div>{{ account.alias }}</div>
-    <div ml-8px>{{ account.id }}</div>
+    <div ml-8px color-gray text-10px>({{ account.id }})</div>
   </div>
   <Tags :tag-ids="account.tags" />
 </template>

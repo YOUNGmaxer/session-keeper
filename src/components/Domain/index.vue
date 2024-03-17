@@ -10,7 +10,7 @@ domainStore.syncDomain()
 
 const clickAdd = () => (visible.value = true)
 const confirmAdd = (account: Account) => {
-  console.log('confirmAdd', account)
+  domainStore.addAccount(account)
 }
 </script>
 

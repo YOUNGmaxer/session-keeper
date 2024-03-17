@@ -9,7 +9,7 @@ class EasyStorage {
     this.storage = opt.storage
   }
 
-  async get(key: string) {
+  async get<T>(key: string): Promise<T> {
     const res = await this.storage.get(key)
     return res[key]
   }

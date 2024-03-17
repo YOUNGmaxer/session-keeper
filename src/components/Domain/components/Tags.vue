@@ -8,6 +8,6 @@ defineProps<{
 
 <template>
   <NSpace size="small">
-    <NTag>tag</NTag>
+    <NTag size="small">tag</NTag>
   </NSpace>
 </template>
