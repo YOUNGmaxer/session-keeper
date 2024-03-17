@@ -11,7 +11,8 @@
   "dependencies": {
     "naive-ui": "^2.38.1",
     "pinia": "^2.1.7",
-    "vue": "^3.4.21"
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.263",

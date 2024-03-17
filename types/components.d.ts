@@ -12,7 +12,6 @@ declare module 'vue' {
     AccountList: typeof import('./../src/components/Domain/components/AccountList.vue')['default']
     Domain: typeof import('./../src/components/Domain/index.vue')['default']
     DomainBar: typeof import('./../src/components/Domain/components/DomainBar.vue')['default']
-    Header: typeof import('./../src/components/Header.vue')['default']
     NButton: typeof import('naive-ui')['NButton']
     NForm: typeof import('naive-ui')['NForm']
     NFormItem: typeof import('naive-ui')['NFormItem']
@@ -22,7 +21,12 @@ declare module 'vue' {
     NModal: typeof import('naive-ui')['NModal']
     NSelect: typeof import('naive-ui')['NSelect']
     NSpace: typeof import('naive-ui')['NSpace']
+    NTabPane: typeof import('naive-ui')['NTabPane']
+    NTabs: typeof import('naive-ui')['NTabs']
     NTag: typeof import('naive-ui')['NTag']
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
+    Tag: typeof import('./../src/components/Tag/index.vue')['default']
     Tags: typeof import('./../src/components/Domain/components/Tags.vue')['default']
   }
 }
