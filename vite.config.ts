@@ -17,9 +17,11 @@ export default defineConfig({
     Vue(),
     UnoCSS(),
     AutoImport({
+      dts: 'types/auto-imports.d.ts',
       imports: ['vue', 'pinia'],
     }),
     Components({
+      dts: 'types/components.d.ts',
       resolvers: [NaiveUiResolver()],
     }),
     ChromeExtensionBuilder(),

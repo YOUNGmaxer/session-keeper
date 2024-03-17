@@ -37,5 +37,3 @@ const deleteAccount = () => {
     </div>
   </NListItem>
 </template>
-
-<style scoped></style>
