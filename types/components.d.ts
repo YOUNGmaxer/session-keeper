@@ -13,6 +13,8 @@ declare module 'vue' {
     Domain: typeof import('./../src/components/Domain/index.vue')['default']
     DomainBar: typeof import('./../src/components/Domain/components/DomainBar.vue')['default']
     NButton: typeof import('naive-ui')['NButton']
+    NCollapse: typeof import('naive-ui')['NCollapse']
+    NCollapseItem: typeof import('naive-ui')['NCollapseItem']
     NForm: typeof import('naive-ui')['NForm']
     NFormItem: typeof import('naive-ui')['NFormItem']
     NInput: typeof import('naive-ui')['NInput']

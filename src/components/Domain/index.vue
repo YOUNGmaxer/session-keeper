@@ -4,7 +4,6 @@ import AccountList from './components/AccountList.vue'
 import { useTag } from '@/modules/tag'
 
 // 初始化
-console.log('init')
 useDomain().syncDomain()
 useTag().syncTags()
 </script>

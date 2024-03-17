@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { RouterName } from '@/router'
+import { NConfigProvider, darkTheme } from 'naive-ui'
 import { useRouter } from 'vue-router'
 
 interface Tab {
