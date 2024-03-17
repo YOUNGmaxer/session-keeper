@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build:watch": "vite build --watch",
+    "dev": "bunx --bun vite",
+    "build:watch": "bunx --bun vite build --watch",
     "build": "vite build"
   },
   "dependencies": {

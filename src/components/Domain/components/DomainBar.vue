@@ -7,8 +7,6 @@ import AddCircle20Regular from '@vicons/fluent/AddCircle20Regular'
 const visible = ref(false)
 const domainStore = useDomain()
 
-domainStore.syncDomain()
-
 const clickAdd = () => (visible.value = true)
 const confirmAdd = (account: Account) => {
   domainStore.addAccount(account)

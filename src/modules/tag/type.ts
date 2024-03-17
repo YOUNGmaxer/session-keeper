@@ -9,8 +9,3 @@ export interface Tag {
   /** 标签颜色 */
   color: string
 }
-
-export const getTag = (id: TagId): Tag | null => {
-  // TODO
-  return null
-}

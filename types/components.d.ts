@@ -13,6 +13,16 @@ declare module 'vue' {
     Domain: typeof import('./../src/components/Domain/index.vue')['default']
     DomainBar: typeof import('./../src/components/Domain/components/DomainBar.vue')['default']
     Header: typeof import('./../src/components/Header.vue')['default']
+    NButton: typeof import('naive-ui')['NButton']
+    NForm: typeof import('naive-ui')['NForm']
+    NFormItem: typeof import('naive-ui')['NFormItem']
+    NInput: typeof import('naive-ui')['NInput']
+    NList: typeof import('naive-ui')['NList']
+    NListItem: typeof import('naive-ui')['NListItem']
+    NModal: typeof import('naive-ui')['NModal']
+    NSelect: typeof import('naive-ui')['NSelect']
+    NSpace: typeof import('naive-ui')['NSpace']
+    NTag: typeof import('naive-ui')['NTag']
     Tags: typeof import('./../src/components/Domain/components/Tags.vue')['default']
   }
 }
