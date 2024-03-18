@@ -1,13 +1,15 @@
 <script setup lang="ts">
-import { TagId } from '@/modules/tag'
+import { TagId, useTag } from '@/modules/tag'
 
-defineProps<{
+const props = defineProps<{
   tagIds: TagId[]
 }>()
+
+const tags = useTag().tags.filter((tag) => props.tagIds.includes(tag.id))
 </script>
 
 <template>
   <NSpace size="small">
-    <NTag v-for="tag in tagIds" size="small">{{ tag }}</NTag>
+    <NTag v-for="tag in tags" size="small">{{ tag.name }}</NTag>
   </NSpace>
 </template>

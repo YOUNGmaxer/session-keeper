@@ -3,6 +3,7 @@ import { queryCurrentDomain } from './api'
 import { queryDomainAccounts, saveDomainAccounts } from './storage'
 import { Domain, DomainAccountMap } from './type'
 import { Account, interCurrentAccountId, useAccount } from '@/modules/account'
+import { formatAccounts } from './helper'
 
 interface State {
   currentDomain: Domain
@@ -23,7 +24,7 @@ export const useDomain = defineStore('domain', {
     async syncDomain() {
       this.currentDomain = await queryCurrentDomain()
       const accounts = await queryDomainAccounts(this.currentDomain)
-      this.domainMap.set(this.currentDomain, Array.isArray(accounts) ? accounts : Object.values(accounts))
+      this.domainMap.set(this.currentDomain, formatAccounts(accounts))
       await this.syncCurrentAccount()
     },
 

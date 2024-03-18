@@ -22,5 +22,3 @@ const confirmAdd = (account: Account) => {
     <AccountFormDialog v-model:visible="visible" @confirm="confirmAdd" />
   </div>
 </template>
-
-<style></style>
