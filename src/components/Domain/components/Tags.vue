@@ -4,8 +4,7 @@ import { TagId, useTag } from '@/modules/tag'
 const props = defineProps<{
   tagIds: TagId[]
 }>()
-
-const tags = useTag().tags.filter((tag) => props.tagIds.includes(tag.id))
+const tags = computed(() => useTag().tags.filter((tag) => props.tagIds.includes(tag.id)))
 </script>
 
 <template>

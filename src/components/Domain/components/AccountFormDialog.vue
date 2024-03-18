@@ -36,10 +36,12 @@ const rules: FormRules = {
     required: false,
   },
 }
-const tagOptions = tagStore.tags.map((tag) => ({
-  label: tag.name,
-  value: tag.id,
-}))
+const tagOptions = computed(() =>
+  tagStore.tags.map((tag) => ({
+    label: tag.name,
+    value: tag.id,
+  }))
+)
 const confirm = async () => {
   try {
     await formRef.value?.validate()
