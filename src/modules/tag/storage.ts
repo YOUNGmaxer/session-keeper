@@ -10,7 +10,7 @@ export const saveTags = async (tags: Tag[], domain: string = '') => {
 
 export const queryTags = async (domain = ''): Promise<Tag[]> => {
   try {
-    return storage.get(makeTagStorageKey(domain))
+    return await storage.get(makeTagStorageKey(domain))
   } catch (err: any) {
     logger.error(err)
     return []

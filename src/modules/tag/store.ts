@@ -1,4 +1,4 @@
-import { queryTags } from './storage'
+import { queryTags, saveTags } from './storage'
 import { Tag } from './type'
 
 interface State {
@@ -14,6 +14,11 @@ export const useTag = defineStore('tag', {
     /** 同步标签数据 */
     async syncTags() {
       this.tags = await queryTags()
+    },
+
+    async addTag(tag: Tag) {
+      this.tags.push(tag)
+      await saveTags(toRaw(this.tags))
     },
   },
 })

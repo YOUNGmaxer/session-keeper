@@ -29,6 +29,7 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Tag: typeof import('./../src/components/Tag/index.vue')['default']
+    TagFormDialog: typeof import('./../src/components/Tag/components/TagFormDialog.vue')['default']
     Tags: typeof import('./../src/components/Domain/components/Tags.vue')['default']
   }
 }

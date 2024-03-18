@@ -27,7 +27,7 @@ const onUpdateValue = (name: string) => {
 </script>
 
 <template>
-  <NTabs class="entry" mt-8px type="card" size="small" :default-value="tabs[0].name" @update-value="onUpdateValue">
+  <NTabs class="entry" mt-8px type="card" size="small" :default-value="tabs[1].name" @update-value="onUpdateValue">
     <NTabPane v-for="tab in tabs" :key="tab.value" :name="tab.name"></NTabPane>
     <template #prefix>
       <div font-100 ml-12px>Session Keeper</div>
