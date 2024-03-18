@@ -29,6 +29,5 @@ tagStore.syncTags()
         <NTag v-for="tag in tagStore.tags">{{ tag.name }}</NTag>
       </NSpace>
     </NCollapseItem>
-    <NCollapseItem title="xxx"></NCollapseItem>
   </NCollapse>
 </template>

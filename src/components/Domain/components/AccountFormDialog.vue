@@ -2,6 +2,7 @@
 import { Account } from '@/modules/account'
 import { useDomain } from '@/modules/domain'
 import { logger } from '@/modules/logger'
+import { useTag } from '@/modules/tag'
 import { FormInst, FormRules, FormItemRule } from 'naive-ui'
 
 const emit = defineEmits<{
@@ -15,6 +16,7 @@ const form = reactive<Account>({
 })
 const formRef = ref<FormInst | null>(null)
 const domainStore = useDomain()
+const tagStore = useTag()
 const rules: FormRules = {
   id: [
     {
@@ -34,6 +36,10 @@ const rules: FormRules = {
     required: false,
   },
 }
+const tagOptions = tagStore.tags.map((tag) => ({
+  label: tag.name,
+  value: tag.id,
+}))
 const confirm = async () => {
   try {
     await formRef.value?.validate()
@@ -55,7 +61,7 @@ const confirm = async () => {
         <NInput v-model:value="form.alias" />
       </NFormItem>
       <NFormItem path="tags" label="标签">
-        <NSelect v-model:value="form.tags" multiple />
+        <NSelect v-model:value="form.tags" multiple :options="tagOptions" />
       </NFormItem>
     </NForm>
     <template #footer>
