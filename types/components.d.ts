@@ -21,6 +21,8 @@ declare module 'vue' {
     NList: typeof import('naive-ui')['NList']
     NListItem: typeof import('naive-ui')['NListItem']
     NModal: typeof import('naive-ui')['NModal']
+    NRadio: typeof import('naive-ui')['NRadio']
+    NRadioGroup: typeof import('naive-ui')['NRadioGroup']
     NSelect: typeof import('naive-ui')['NSelect']
     NSpace: typeof import('naive-ui')['NSpace']
     NTabPane: typeof import('naive-ui')['NTabPane']
@@ -29,6 +31,7 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Tag: typeof import('./../src/components/Tag/index.vue')['default']
+    TagColor: typeof import('./../src/components/Tag/components/TagColor.vue')['default']
     TagFormDialog: typeof import('./../src/components/Tag/components/TagFormDialog.vue')['default']
     Tags: typeof import('./../src/components/Domain/components/Tags.vue')['default']
   }

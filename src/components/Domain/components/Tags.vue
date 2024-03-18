@@ -9,6 +9,6 @@ const tags = computed(() => useTag().tags.filter((tag) => props.tagIds.includes(
 
 <template>
   <NSpace size="small">
-    <NTag v-for="tag in tags" size="small">{{ tag.name }}</NTag>
+    <NTag v-for="tag in tags" size="small" :type="tag.color">{{ tag.name }}</NTag>
   </NSpace>
 </template>

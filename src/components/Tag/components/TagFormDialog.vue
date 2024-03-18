@@ -45,7 +45,7 @@ const reset = () => Object.assign(form, createTag())
         <NInput v-model:value="form.name" />
       </NFormItem>
       <NFormItem path="color" label="颜色">
-        <NInput v-model:value="form.color" />
+        <TagColor v-model:color="form.color" />
       </NFormItem>
     </NForm>
     <template #footer>

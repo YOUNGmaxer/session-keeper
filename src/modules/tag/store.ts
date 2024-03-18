@@ -14,6 +14,7 @@ export const useTag = defineStore('tag', {
     /** 同步标签数据 */
     async syncTags() {
       this.tags = await queryTags()
+      console.log('azeryang => syncTags => this.tags:', this.tags)
     },
 
     async addTag(tag: Tag) {
