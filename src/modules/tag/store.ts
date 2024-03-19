@@ -20,5 +20,10 @@ export const useTag = defineStore('tag', {
       this.tags.push(tag)
       await saveTags(toRaw(this.tags))
     },
+
+    async deleteTag(tag: Tag) {
+      this.tags = this.tags.filter((item) => item.id !== tag.id)
+      await saveTags(toRaw(this.tags))
+    },
   },
 })

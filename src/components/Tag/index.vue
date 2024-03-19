@@ -26,7 +26,9 @@ tagStore.syncTags()
         <TagFormDialog v-model:visible="visible" @confirm="confirmAdd" />
       </template>
       <NSpace size="small">
-        <NTag v-for="tag in tagStore.tags" :type="tag.color">{{ tag.name }}</NTag>
+        <NTag v-for="tag in tagStore.tags" :type="tag.color" closable @close="tagStore.deleteTag(tag)">{{
+          tag.name
+        }}</NTag>
       </NSpace>
     </NCollapseItem>
   </NCollapse>
