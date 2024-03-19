@@ -55,6 +55,16 @@ export const useDomain = defineStore('domain', {
       await this.saveCookie(account)
     },
 
+    /** 更新账户 */
+    async updateAccount(account: Account) {
+      // 更新其中的一个账户
+      this.domainMap.set(
+        this.currentDomain,
+        this.currentAccounts.map((item) => (item.id === account.id ? account : item))
+      )
+      await this.saveDomain()
+    },
+
     async deleteAccount(account: Account) {
       const accounts = toRaw(this.currentAccounts)
       this.domainMap.set(

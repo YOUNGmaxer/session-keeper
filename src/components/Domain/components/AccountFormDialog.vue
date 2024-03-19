@@ -4,16 +4,25 @@ import { useDomain } from '@/modules/domain'
 import { logger } from '@/libs/logger'
 import { useTag } from '@/modules/tag'
 import { FormInst, FormRules, FormItemRule } from 'naive-ui'
+import { cloneDeep } from 'lodash-es'
 
 const emit = defineEmits<{
   (e: 'confirm', form: Account): void
 }>()
+const props = defineProps<{
+  account?: Account
+}>()
 const visible = defineModel<boolean>('visible')
-const form = reactive<Account>({
-  id: '',
-  alias: '',
-  tags: [],
-})
+const isEdit = computed(() => Boolean(props.account))
+const form = reactive<Account>(
+  props.account
+    ? cloneDeep(toRaw(props.account))
+    : {
+        id: '',
+        alias: '',
+        tags: [],
+      }
+)
 const formRef = ref<FormInst | null>(null)
 const domainStore = useDomain()
 const tagStore = useTag()
@@ -22,6 +31,8 @@ const rules: FormRules = {
     {
       required: true,
       validator(_: FormItemRule, value: string) {
+        // 编辑场景不做 id 重复校验
+        if (isEdit.value) return true
         if (domainStore.currentAccounts.find((item) => item.id === value)) {
           return new Error('该账户已存在')
         }
@@ -57,7 +68,7 @@ const confirm = async () => {
   <NModal v-model:show="visible" preset="card" title="添加账户" mx-20px>
     <NForm ref="formRef" :model="form" :rules="rules">
       <NFormItem path="id" label="ID">
-        <NInput v-model:value="form.id" />
+        <NInput v-model:value="form.id" :disabled="isEdit" />
       </NFormItem>
       <NFormItem path="alias" label="别名">
         <NInput v-model:value="form.alias" />
