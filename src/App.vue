@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { RouterName } from '@/router'
-import { NConfigProvider, darkTheme } from 'naive-ui'
 import { useRouter } from 'vue-router'
 
 interface Tab {
@@ -19,6 +18,7 @@ const tabs: Tab[] = [
   },
 ]
 const router = useRouter()
+const loading = ref(false)
 
 const onUpdateValue = (name: string) => {
   const tabVal = tabs.find((tab) => tab.name === name)?.value
@@ -27,17 +27,21 @@ const onUpdateValue = (name: string) => {
 </script>
 
 <template>
-  <NTabs class="entry" mt-8px type="card" size="small" :default-value="tabs[0].name" @update-value="onUpdateValue">
-    <NTabPane v-for="tab in tabs" :key="tab.value" :name="tab.name"></NTabPane>
-    <template #prefix>
-      <div font-100 ml-12px>Session Keeper</div>
-    </template>
-  </NTabs>
-  <RouterView v-slot="{ Component }">
-    <KeepAlive>
-      <component :is="Component" />
-    </KeepAlive>
-  </RouterView>
+  <NSpin :show="loading">
+    <div h-100vh>
+      <NTabs class="entry" pt-8px type="card" size="small" :default-value="tabs[0].name" @update-value="onUpdateValue">
+        <NTabPane v-for="tab in tabs" :key="tab.value" :name="tab.name"></NTabPane>
+        <template #prefix>
+          <div font-100 ml-12px>Session Keeper</div>
+        </template>
+      </NTabs>
+      <RouterView v-slot="{ Component }">
+        <KeepAlive>
+          <component :is="Component" />
+        </KeepAlive>
+      </RouterView>
+    </div>
+  </NSpin>
 </template>
 
 <style>
