@@ -1,6 +1,6 @@
-import { queryCurrentUrl } from '@/modules/url'
+import { queryCurrentUrl } from '@/libs/url'
 import { Cookie } from './type'
-import { logger } from '@/modules/logger'
+import { logger } from '@/libs/logger'
 
 export async function getCookiesByDomain(domain: string): Promise<Cookie[]> {
   return new Promise((resolve) => {

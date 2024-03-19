@@ -1,4 +1,4 @@
-import { storage } from '@/modules/storage'
+import { storage } from '@/libs/storage'
 import { Cookie } from './type'
 
 export const saveAccountCookie = async (accountId: string, cookies: Cookie[]) => {

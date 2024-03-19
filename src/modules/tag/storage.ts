@@ -1,6 +1,6 @@
-import { storage } from '@/modules/storage'
+import { storage } from '@/libs/storage'
 import { Tag } from './type'
-import { logger } from '@/modules/logger'
+import { logger } from '@/libs/logger'
 
 const makeTagStorageKey = (domain: string): string => (domain ? `tag_${domain}` : `tag_common`)
 

@@ -1,7 +1,7 @@
 import { Account } from '@/modules/account'
 import { Domain } from './type'
-import { storage } from '@/modules/storage'
-import { logger } from '@/modules/logger'
+import { storage } from '@/libs/storage'
+import { logger } from '@/libs/logger'
 
 enum StorageKey {
   domains = 'domains',
