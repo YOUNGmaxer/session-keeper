@@ -12,7 +12,7 @@ export const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: { name: RouterName.Tag },
+      redirect: { name: RouterName.Domain },
     },
     {
       path: '/domain',

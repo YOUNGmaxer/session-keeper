@@ -46,8 +46,11 @@ export const useDomain = defineStore('domain', {
       await saveAccountCookie(account.id, cookies)
     },
 
+    /** 只能添加当前登录的账户 */
     async addAccount(account: Account) {
       this.domainMap.set(this.currentDomain, [...toRaw(this.currentAccounts), account])
+      // 更新当前账户为新添加的账户
+      useAccount().currentAccount = account
       await this.saveDomain()
       await this.saveCookie(account)
     },
