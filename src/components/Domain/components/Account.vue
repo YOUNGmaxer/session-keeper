@@ -4,7 +4,7 @@ import Tags from './Tags.vue'
 import Delete28Filled from '@vicons/fluent/Delete28Filled'
 import { Icon } from '@vicons/utils'
 import { useDomain } from '@/modules/domain'
-import { reloadCurrentTab } from '@/modules/tab'
+import { reloadCurrentTab } from '@/libs/tab'
 
 const props = defineProps<{
   account: Account
@@ -39,4 +39,3 @@ const deleteAccount = () => {
     </div>
   </NListItem>
 </template>
-@/libs/tab

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { logger } from '@/modules/logger'
+import { logger } from '@/libs/logger'
 import { Tag, createTag, useTag } from '@/modules/tag'
 import { FormInst, FormRules } from 'naive-ui'
 
@@ -55,4 +55,3 @@ const reset = () => Object.assign(form, createTag())
     </template>
   </NModal>
 </template>
-@/libs/logger

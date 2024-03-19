@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Account } from '@/modules/account'
 import { useDomain } from '@/modules/domain'
-import { logger } from '@/modules/logger'
+import { logger } from '@/libs/logger'
 import { useTag } from '@/modules/tag'
 import { FormInst, FormRules, FormItemRule } from 'naive-ui'
 
@@ -73,4 +73,3 @@ const confirm = async () => {
     </template>
   </NModal>
 </template>
-@/libs/logger
