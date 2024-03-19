@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterName } from '@/router'
 import { useRouter } from 'vue-router'
+import { useLoading } from './libs/loading'
 
 interface Tab {
   name: string
@@ -18,7 +19,7 @@ const tabs: Tab[] = [
   },
 ]
 const router = useRouter()
-const loading = ref(false)
+const { loading } = useLoading('global')
 
 const onUpdateValue = (name: string) => {
   const tabVal = tabs.find((tab) => tab.name === name)?.value
