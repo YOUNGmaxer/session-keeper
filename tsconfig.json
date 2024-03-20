@@ -3,6 +3,9 @@
     "strict": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "lib": [
+      "ESNext"
+    ],
     "paths": {
       "@/*": [
         "./src/*"

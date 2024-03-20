@@ -33,7 +33,11 @@ export const useDomain = defineStore('domain', {
       const currentAccountId = await interCurrentAccountId()
       if (currentAccountId) {
         const currentAccount = this.currentAccounts.find((item) => item.id === currentAccountId)
-        if (currentAccount) useAccount().currentAccount = currentAccount
+        if (currentAccount) {
+          useAccount().currentAccount = currentAccount
+          // 保存最新的账户 Cookie
+          await this.saveCookie(currentAccount)
+        }
       }
     },
 
@@ -41,6 +45,7 @@ export const useDomain = defineStore('domain', {
       await saveDomainAccounts(this.currentDomain, this.currentAccounts)
     },
 
+    /** 保存账户 Cookie */
     async saveCookie(account: Account) {
       const cookies = await getCookies()
       await saveAccountCookie(account.id, cookies)
