@@ -1,6 +1,7 @@
 import { queryCurrentUrl } from '@/libs/url'
 import { Cookie } from './type'
 import { logger } from '@/libs/logger'
+import { checkIsCookieExpired } from './helper'
 
 export async function getCookiesByDomain(domain: string): Promise<Cookie[]> {
   return new Promise((resolve) => {
@@ -51,7 +52,8 @@ export async function setCookies(cookies: Cookie[]): Promise<void> {
   for (const cookie of cookies) {
     // hostOnly 的 cookie 无法设置，跳过
     if (cookie.hostOnly) continue
-    // TODO: 过期 cookie 跳过
+    // 过期 cookie 跳过
+    if (checkIsCookieExpired(cookie)) continue
     tasks.push(setCookie(url.href, cookie))
   }
   await Promise.allSettled(tasks)
