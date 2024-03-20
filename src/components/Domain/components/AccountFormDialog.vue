@@ -65,7 +65,7 @@ const confirm = async () => {
 </script>
 
 <template>
-  <NModal v-model:show="visible" preset="card" title="添加账户" mx-20px>
+  <NModal v-model:show="visible" preset="card" :title="isEdit ? '修改账户' : '添加账户'" mx-20px>
     <NForm ref="formRef" :model="form" :rules="rules">
       <NFormItem path="id" label="ID">
         <NInput v-model:value="form.id" :disabled="isEdit" />
