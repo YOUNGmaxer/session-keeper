@@ -19,6 +19,6 @@ const confirmAdd = (account: Account) => {
     <Icon size="20" cursor-pointer hover-color-sky mr-5px @click="clickAdd">
       <AddCircle20Regular />
     </Icon>
-    <AccountFormDialog v-model:visible="visible" @confirm="confirmAdd" />
+    <AccountFormDialog v-if="visible" v-model:visible="visible" @confirm="confirmAdd" />
   </div>
 </template>

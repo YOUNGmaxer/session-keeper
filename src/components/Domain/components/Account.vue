@@ -36,7 +36,7 @@ const deleteAccount = () => {
           <div :class="active ? 'color-white' : ''">{{ account.alias || account.id }}</div>
           <div ml-8px text-10px :class="active ? 'color-light' : 'color-gray'">({{ account.id }})</div>
         </div>
-        <Tags :tag-ids="account.tags" />
+        <Tags :tag-ids="account.tags" :active="active" />
       </div>
       <div flex items-center>
         <Icon mr-6px hover-color-coolgray @click.stop="toEditAccount">

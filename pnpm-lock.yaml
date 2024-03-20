@@ -1,7 +1,7 @@
 lockfileVersion: '6.0'
 
 settings:
-  autoInstallPeers: true
+  autoInstallPeers: false
   excludeLinksFromLockfile: false
 
 overrides:
@@ -45,7 +45,7 @@ devDependencies:
     version: 5.4.2
   unocss:
     specifier: ^0.58.6
-    version: 0.58.6(postcss@8.4.35)(vite@5.1.6)
+    version: 0.58.6(vite@5.1.6)
   unplugin-auto-import:
     specifier: ^0.17.5
     version: 0.17.5
@@ -702,7 +702,7 @@ packages:
     resolution: {integrity: sha512-XTIWOPPcpvyKI6L1NHo0lFlCyznUEyPmPY1mc3KpPVDYulHSTvyeLNVW00QTLIAFNhR3kYnJTQHeGqU4M3n09g==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
-      rollup: npm:@rollup/wasm-node
+      rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
     peerDependenciesMeta:
       rollup:
         optional: true
@@ -828,11 +828,9 @@ packages:
       sirv: 2.0.4
     dev: true
 
-  /@unocss/postcss@0.58.6(postcss@8.4.35):
+  /@unocss/postcss@0.58.6:
     resolution: {integrity: sha512-jTwu7llhRm7luscsk0JekCeo6RS2W98CXiCJRE1H6IDQnjGQQ/9uRAqW4wuLsv7OQ1ThF8m9NKEj0wFJv7ePNg==}
     engines: {node: '>=14'}
-    peerDependencies:
-      postcss: ^8.4.21
     dependencies:
       '@unocss/config': 0.58.6
       '@unocss/core': 0.58.6
@@ -1905,7 +1903,7 @@ packages:
       - rollup
     dev: true
 
-  /unocss@0.58.6(postcss@8.4.35)(vite@5.1.6):
+  /unocss@0.58.6(vite@5.1.6):
     resolution: {integrity: sha512-HBstDtC6KKD5yCYh5hHpPdHGZai0B/iLlDwkOIK+xfQYrvl8tNBvKfRz3xgiaI5MJ+fLmEOxbfXQIjleU1A0iA==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -1921,7 +1919,7 @@ packages:
       '@unocss/cli': 0.58.6
       '@unocss/core': 0.58.6
       '@unocss/extractor-arbitrary-variants': 0.58.6
-      '@unocss/postcss': 0.58.6(postcss@8.4.35)
+      '@unocss/postcss': 0.58.6
       '@unocss/preset-attributify': 0.58.6
       '@unocss/preset-icons': 0.58.6
       '@unocss/preset-mini': 0.58.6
@@ -1939,7 +1937,6 @@ packages:
       '@unocss/vite': 0.58.6(vite@5.1.6)
       vite: 5.1.6
     transitivePeerDependencies:
-      - postcss
       - rollup
       - supports-color
     dev: true

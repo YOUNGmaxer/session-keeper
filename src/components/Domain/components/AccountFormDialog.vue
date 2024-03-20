@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Account } from '@/modules/account'
+import { Account, useAccount } from '@/modules/account'
 import { useDomain } from '@/modules/domain'
 import { logger } from '@/libs/logger'
 import { useTag } from '@/modules/tag'
@@ -18,7 +18,7 @@ const form = reactive<Account>(
   props.account
     ? cloneDeep(toRaw(props.account))
     : {
-        id: '',
+        id: useAccount().currentAccount?.id || '',
         alias: '',
         tags: [],
       }
