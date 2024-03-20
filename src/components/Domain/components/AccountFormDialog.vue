@@ -18,7 +18,7 @@ const form = reactive<Account>(
   props.account
     ? cloneDeep(toRaw(props.account))
     : {
-        id: useAccount().currentAccount?.id || '',
+        id: useAccount().currentCookieAccountId,
         alias: '',
         tags: [],
       }

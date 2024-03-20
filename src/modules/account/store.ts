@@ -4,11 +4,13 @@ import { useLoading } from '@/libs/loading'
 import { logger } from '@/libs/logger'
 
 interface State {
+  currentCookieAccountId: string
   currentAccount: Account | null
 }
 
 export const useAccount = defineStore('account', {
   state: (): State => ({
+    currentCookieAccountId: '',
     currentAccount: null,
   }),
 

@@ -32,6 +32,7 @@ export const useDomain = defineStore('domain', {
     async syncCurrentAccount() {
       const currentAccountId = await interCurrentAccountId()
       if (currentAccountId) {
+        useAccount().currentCookieAccountId = currentAccountId
         const currentAccount = this.currentAccounts.find((item) => item.id === currentAccountId)
         if (currentAccount) {
           useAccount().currentAccount = currentAccount
