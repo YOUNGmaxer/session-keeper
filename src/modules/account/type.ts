@@ -8,4 +8,6 @@ export interface Account {
   alias: string
   /** 账户所有标签 */
   tags: TagId[]
+  /** 登录态过期时间 */
+  expireTime?: number
 }

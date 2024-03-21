@@ -1,4 +1,4 @@
-import { getCookies } from '@/modules/cookie'
+import { getCookies, Cookie } from '@/modules/cookie'
 
 const keyCookies = ['uid']
 
@@ -10,4 +10,13 @@ export async function interCurrentAccountId(): Promise<string> {
     if (cookie) return cookie.value
   }
   return ''
+}
+
+/** 查找关键 Cookie（即当前账户）的过期时间 */
+export function findAccountExpireTime(cookies: Cookie[]): number | null {
+  for (const keyCookie of keyCookies) {
+    const cookie = cookies.find((item) => item.name === keyCookie)
+    if (cookie) return cookie.expirationDate || null
+  }
+  return null
 }

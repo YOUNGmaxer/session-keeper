@@ -35,9 +35,7 @@ export const useDomain = defineStore('domain', {
         useAccount().currentCookieAccountId = currentAccountId
         const currentAccount = this.currentAccounts.find((item) => item.id === currentAccountId)
         if (currentAccount) {
-          useAccount().currentAccount = currentAccount
-          // 保存最新的账户 Cookie
-          await this.saveCookie(currentAccount)
+          await useAccount().updateCurrentAccount(currentAccount)
         }
       }
     },
@@ -46,19 +44,12 @@ export const useDomain = defineStore('domain', {
       await saveDomainAccounts(this.currentDomain, this.currentAccounts)
     },
 
-    /** 保存账户 Cookie */
-    async saveCookie(account: Account) {
-      const cookies = await getCookies()
-      await saveAccountCookie(account.id, cookies)
-    },
-
     /** 只能添加当前登录的账户 */
     async addAccount(account: Account) {
       this.domainMap.set(this.currentDomain, [...toRaw(this.currentAccounts), account])
       // 更新当前账户为新添加的账户
-      useAccount().currentAccount = account
+      await useAccount().updateCurrentAccount(account)
       await this.saveDomain()
-      await this.saveCookie(account)
     },
 
     /** 更新账户 */

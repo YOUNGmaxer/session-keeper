@@ -6,6 +6,7 @@ import Edit20Filled from '@vicons/fluent/Edit20Filled'
 import { Icon } from '@vicons/utils'
 import { useDomain } from '@/modules/domain'
 import { reloadCurrentTab } from '@/libs/tab'
+import { isExpired } from '@/utils/time'
 
 const props = defineProps<{
   account: Account
@@ -35,6 +36,7 @@ const deleteAccount = () => {
         <div flex items-center>
           <div :class="active ? 'color-white' : ''">{{ account.alias || account.id }}</div>
           <div ml-8px text-10px :class="active ? 'color-light' : 'color-gray'">({{ account.id }})</div>
+          <NTag ml-8px type="error" size="small" round v-if="isExpired(account.expireTime)">已过期</NTag>
         </div>
         <Tags :tag-ids="account.tags" :active="active" />
       </div>
