@@ -19,6 +19,8 @@ const switchAccount = async () => {
   const isSuccess = await useAccount().switchAccount(props.account)
   // 切换完账户，刷新页面
   isSuccess && reloadCurrentTab()
+  // 切换过程中可能发生账户更新，需更新账户存储
+  useDomain().updateAccount(props.account)
 }
 const toEditAccount = () => (accountEditorVisible.value = true)
 const confirmEdit = (account: Account) => {
